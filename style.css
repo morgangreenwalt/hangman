@@ -1,0 +1,19 @@
+.row {
+	background-image: url("assets/beer.jpg");
+	height: 450px;
+    background-position-x: 0%;
+    background-position-y: 30%;
+    background-size: cover;
+}
+
+body {
+	color: #fff;
+}
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	margin-top: 150px;
+}
