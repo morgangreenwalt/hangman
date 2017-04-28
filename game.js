@@ -1,36 +1,39 @@
-var userChoice = [];
+$(document).ready(function(){
+
 var availableWords = ["ipa", "stout", "lambic", "gueuze", "kriek"];
-var chances = 15;
 var letterChoices = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 var wins = 0;
-var wrongGuesses = [];
-var rightGuesses = [];
+var chances = 15;
+var guesses = [];
+
+//Game start display
 var currentWord = availableWords[Math.floor(Math.random() * availableWords.length)];
-var blanks = currentWord.split(" ");
+var blanks = currentWord.split("").map(function(){return "_"})
+$(".current-word").html("<h4>" + "Current Beer Style<br/>" + blanks.join(" ") + "</h4>");
 
-console.log(currentWord);
-
-//Making letters appear as underscores
-var underScores = [];
-for (var i = 0; i < currentWord.length; i++) {
-	console.log(underScores[i] = "_");
-}
-
-//Letters Guessed Module
+//User guesses to correct word
 document.onkeyup = function(event) {
+	var finder = currentWord.indexOf(userChoice);
+	var userChoice = "";
 	var userChoice = event.key;
+	
+	while (finder > -1) {
+		blanks[finder] = userChoice;
+		var finder = currentWord.indexOf(userChoice,finder + 1);
+		$(".current-word").append("<h4>" + userChoice + "</h4>");
+	}
 
-		if (userChoice > currentWord.indexOf(-1)) {
-			rightGuesses.push(userChoice);
-			$("#current-word").html("<div>" + rightGuesses + "</div>");
-			
-			if (rightGuesses === currentWord) { 
-			$("#wins").html("<h4>" + wins++ + "</h4>");
-			}
-		}
+//Letters Already Guessed
+	if (guesses.indexOf(userChoice) === -1) {
+		guesses.push(userChoice);
+		$("#letters-bucket").html("<h4>" + "Letters already guessed<br/>" + guesses.join(" ") + "</h4>");
+	}
 
-		else {
-			wrongGuesses.push(userChoice);
-			$("#letters-bucket").html("<h4>" + "Letters already guessed<br/>" + wrongGuesses.join(" ") + "</h4>");
-		}
+//Chances counter + loser prompt
+	chances--;
+	$(".guesses-remaining").html(chances);
+	if (chances === 0) {
+		alert("Booooooo, you lose. Go try different beer styles then return for more.");
+	}
 }
+})

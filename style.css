@@ -1,13 +1,17 @@
-.row {
+img {
 	background-image: url("assets/beer.jpg");
-	height: 450px;
+	opacity: 0.5;
+	height: 500px;
     background-position-x: 0%;
     background-position-y: 30%;
     background-size: cover;
+    text-align: center;
+    position: relative;
+    width: 100%;
 }
 
 body {
-	color: #fff;
+	color: #000;
 }
 
 h1 {
@@ -16,4 +20,12 @@ h1 {
 
 h2 {
 	margin-top: 150px;
+}
+
+.game-text {
+	position: absolute;
+	bottom: 75px;
+    left: 30%;
+	text-align: center;
+}
 }
