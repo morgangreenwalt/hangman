@@ -34,17 +34,17 @@ document.onkeyup = function(event) {
 	$(".guesses-remaining").html(chances);
 	if (chances === 0) {
 		alert("Booooooo, you lose. Go try different beer styles then return for more.");
+		//Reset game
+		function reset() {
+		var chances = 15;	
+		//Pick a random word from words array
+		currentWord = availableWords[Math.floor(Math.random()* words.length)];
+		for (var i = 0; i < currentWord.length; i++) {
+		//Replace all letters in word with "_"
+		blanks[i] = "_";
+		}
 	}
 }
-
-//Reset game
-function reset() {
-	//Pick a random word from words array
-	currentWord = availableWords[Math.floor(Math.random()* words.length)];
-	for (var i = 0; i < currentWord.length; i++) {
-	//Replace all letters in word with "_"
-	blanks[i] = "_";
-	}
 
 }
 })
