@@ -36,4 +36,15 @@ document.onkeyup = function(event) {
 		alert("Booooooo, you lose. Go try different beer styles then return for more.");
 	}
 }
+
+//Reset game
+function reset() {
+	//Pick a random word from words array
+	currentWord = availableWords[Math.floor(Math.random()* words.length)];
+	for (var i = 0; i < currentWord.length; i++) {
+	//Replace all letters in word with "_"
+	blanks[i] = "_";
+	}
+
+}
 })
