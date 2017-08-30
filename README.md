@@ -1,7 +1,7 @@
 Hangman Game
 -------
 
-Hangman game. Come guess types of beer! 
+An interactive Hangman game. Come guess types of beer! 
 
 Technologies used: 
 1. Javascript
